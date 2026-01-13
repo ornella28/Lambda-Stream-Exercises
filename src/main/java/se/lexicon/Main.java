@@ -15,7 +15,7 @@ public class Main {
                 new Person("Omar", 19, "Stockholm", true)
         );
 
-        //Exercise 1: Create a functional interface named PersonRule
+        //Exercise 2:
 
         PersonRule isAdult = p -> p.getAge() >=18;
 
