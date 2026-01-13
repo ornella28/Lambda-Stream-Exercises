@@ -2,7 +2,9 @@ package se.lexicon;
 
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
 
@@ -54,6 +56,52 @@ public class Main {
         System.out.println("---------------------");
         System.out.println("Active People: ");
         activePeople.forEach(System.out::println);
+        System.out.println("---------------------");
+
+        //Exercise 4: personAction
+        PersonAction printName = p -> System.out.println(p.getName());
+        PersonAction sendEmail = p -> System.out.println("Sending email to " + p.getName());
+
+        for (Person p: people){
+            printName.perform(p);
+        }
+
+        for (Person p: people){
+            sendEmail.perform(p);
+        }
+
+        //Stream
+        //Exercise1: filter all active people
+
+        List<Person> activePeopleStream = people.stream()
+                .filter(Person::isActive)
+                .toList();
+
+        //Exercise2: map all people
+        List<String> names = people.stream()
+                .map(Person::getName)
+                .toList();
+
+        //Exercise3: count adults
+        long adultCount = people.stream()
+                .filter(p -> p.getAge() >= 18)
+                .count();
+
+        //Exercise4: sort people by age
+        List<Person> sortedByAge = people.stream()
+                .sorted(Comparator.comparingInt(Person::getAge))
+                .toList();
+
+        //Exercise5: find first active person from Stockholm
+        Optional <Person> firstActiveInStockholm = people.stream()
+                .filter(Person::isActive)
+                .filter(p -> p.getCity().equals("Stockholm"))
+                .findFirst();
+
+
+
+
+
 
 
 
