@@ -1,6 +1,7 @@
 package se.lexicon;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -19,27 +20,57 @@ public class Main {
 
         PersonRule isAdult = p -> p.getAge() >=18;
 
-        for (Person p: people){
+       /* for (Person p: people){
             if(isAdult .test(p)){
                 System.out.println(p.getName()+ " is an adult");
             }
-        }
+        }*/
+
         PersonRule isFromStockholm = p -> p.getCity().equals("Stockholm");
 
-        for (Person p: people){
+        /*for (Person p: people){
             if(isFromStockholm .test(p)){
                 System.out.println(p.getName()+ " is from Stockholm");
             }
 
-        }
+        }*/
         PersonRule isActive = p -> p.isActive();
-        for (Person p: people){
+        /*for (Person p: people){
             if(isActive .test(p)){
                 System.out.println(p.getName()+ " is active");
             }
 
-        }
+        }*/
 
+        List<Person> adults = filteredPeople(people, isAdult);
+        List<Person> stockholmers = filteredPeople(people, isFromStockholm);
+        List<Person> activePeople = filteredPeople(people, isActive);
+
+        System.out.println("Adults: ");
+        adults.forEach(System.out::println);//for better printout
+        System.out.println("-----------------");
+        System.out.println("People from Stockholm: ");
+        stockholmers.forEach(System.out::println);
+        System.out.println("---------------------");
+        System.out.println("Active People: ");
+        activePeople.forEach(System.out::println);
+
+
+
+
+
+
+    }
+    //Exercise 3: filterPeople method
+    public static List<Person> filteredPeople(List<Person> people, PersonRule rule){
+        List<Person> result = new ArrayList<>();
+
+        for(Person p: people){
+            if(rule.test(p)){
+                result.add(p);
+            }
+        }
+        return result;
     }
 
 
