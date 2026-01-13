@@ -98,6 +98,25 @@ public class Main {
                 .filter(p -> p.getCity().equals("Stockholm"))
                 .findFirst();
 
+        //Optional tasks:
+        //Exercise 1: Active adults
+        List<Person> activeAdults = people.stream()
+                .filter(Person::isActive)
+                .filter(p-> p.getAge()>=18)
+                .toList();
+
+        //Exercise2: Active people in Stockholm
+        List<Person> activeInStockholm = people.stream()
+                .filter(Person::isActive)
+                .filter(p -> p.getCity().equals("Stockholm"))
+                .toList();
+
+        //Exercise3: Inactive people older than 30
+        List<Person> inactiveOlderThan30 = people.stream()
+                .filter(p -> !p.isActive())
+                .filter(p -> p.getAge() > 30)
+                .toList();
+
 
 
 
