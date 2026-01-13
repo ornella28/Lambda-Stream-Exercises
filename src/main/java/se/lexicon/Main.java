@@ -134,7 +134,15 @@ public class Main {
 
         //Exercise 3: Mapping and Formatting
         //List of strings in format Name (Age) - city
-        List<String>
+        List<String> nameAgeCity = people.stream()
+                .map(p -> p.getName() + "(" + p.getAge() + ") - "   + p.getCity())
+                .toList();
+
+        //List of emails like name.toLowerCase() + "@example.com"
+        List<String> emails = people.stream()
+                .map(p-> p.getName().toLowerCase() + "@example.com")
+                .toList();
+
 
 
 
