@@ -18,8 +18,27 @@ public class Main {
         //Exercise 1: Create a functional interface named PersonRule
 
         PersonRule isAdult = p -> p.getAge() >=18;
+
+        for (Person p: people){
+            if(isAdult .test(p)){
+                System.out.println(p.getName()+ " is an adult");
+            }
+        }
         PersonRule isFromStockholm = p -> p.getCity().equals("Stockholm");
+
+        for (Person p: people){
+            if(isFromStockholm .test(p)){
+                System.out.println(p.getName()+ " is from Stockholm");
+            }
+
+        }
         PersonRule isActive = p -> p.isActive();
+        for (Person p: people){
+            if(isActive .test(p)){
+                System.out.println(p.getName()+ " is active");
+            }
+
+        }
 
     }
 
