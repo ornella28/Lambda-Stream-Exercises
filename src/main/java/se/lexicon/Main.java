@@ -151,15 +151,6 @@ public class Main {
 
 
 
-
-
-
-
-
-
-
-
-
     }
     //Exercise 3: filterPeople method
     public static List<Person> filteredPeople(List<Person> people, PersonRule rule){
